@@ -41,7 +41,7 @@ class Observable {
 }
 
 /**
- * Clase hija de la clase observable, que además extiende las funciones que este tiene.
+ * Clase hija de la clase que va a ser observada (clase hija), que además extiende las funciones que este tiene.
  */
 
 class NumberExample extends Observable {
@@ -51,7 +51,7 @@ class NumberExample extends Observable {
   }
 
   /**
-   * Esta función llama a value y lo va incrementando en uno cada vez que se llama y además le envia todo el contexto de este a la función de su padre this.notifyObservable.
+   * Esta función llama a value y lo va incrementando en uno cada vez que se llama y además le envia todo el contexto de este a la función de su padre this.notifyObservable. Además de cambiar el valor de la variable value, hace que los observadores reaccionen a este cambio
    */
   increment() {
     this.value++;
@@ -60,16 +60,16 @@ class NumberExample extends Observable {
 }
 
 /**
- * Clase que tiene una funcion de notificación en Español.
+ * Clase Observadora que tiene una funcion de notificación en Español incluyendo el valor del observable actualizado.
  */
 class NumberExampleSpanish {
   notify(notification) {
-    console.log(`El nuevo número es: ${notification.value}`); //Esta función imprime en consola el valor de ese párametro recibido.
+    console.log(`El nuevo número es: ${notification.value}`); //Esta función manipula la información actualizada en el observable.
   }
 }
 
 /**
- * Clase que tiene una funcion de notificación en Inglés.
+ * Clase Observadora que tiene una funcion de notificación en Inglés incluyendo el valor del observable actualizado.
  */
 class NumberExampleEnglish {
   notify(notification) {
@@ -77,18 +77,18 @@ class NumberExampleEnglish {
   }
 }
 
-// variable en la que se instancia la clase NumberExample
+// objeto de la clase observada
 let numberExample = new NumberExample();
 
 /**
- * En esta sección, la variable se suscribe a los observadores NumberExampleSpanish y NumberExampleEnglish y así
- * poder ver los cambios del observable y sus hijos.
+ * En esta sección, los observadores NumberExampleSpanish y NumberExampleEnglish se suscriben al observable
+ * poder ver los cambios de la clase observada.
  */
 numberExample.subscribe(new NumberExampleSpanish());
 numberExample.subscribe(new NumberExampleEnglish());
 
 /**
- * Se invoca 2 veces la función increment de variable numberExample en la que se instanció la clase NumberExample
+ * Se invoca 2 veces la función increment del objeto de la clase obaservada y así hacer reaccionar a los observadores
  */
 numberExample.increment();
 numberExample.increment();

@@ -1,18 +1,18 @@
 class Observable {
   constructor() {
-    this.users = [];
+    this.observadores = [];
   }
 
   subscribe(observerClass) {
-    this.users.push(observerClass);
+    this.observadores.push(observerClass);
   }
 
   unsubscribe(observerClass) {
-    this.users.filter((observer) => observer instanceof observerClass !== true);
+    this.observadores.filter((observer) => observer instanceof observerClass !== true);
   }
 
   notifyObservable(message) {
-    this.users.forEach((observer) => {
+    this.observadores.forEach((observer) => {
       observer.notify(message);
     });
   }

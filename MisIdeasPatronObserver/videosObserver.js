@@ -1,20 +1,20 @@
 class Observable {
   constructor() {
-    this.videos = [];
+    this.observadores = [];
   }
 
   subscribe(observerClass) {
-    this.videos.push(observerClass);
+    this.observadores.push(observerClass);
   }
 
   unsubscribe(observerClass) {
-    this.videos.filter(
+    this.observadores.filter(
       (observer) => observer instanceof observerClass !== true
     );
   }
 
   notifyObservable(message) {
-    this.videos.forEach((observer) => {
+    this.observadores.forEach((observer) => {
       observer.notify(message);
     });
   }
@@ -28,6 +28,7 @@ class reproductionList extends Observable {
   }
   update(title) {
     this.lastVideo = title;
+    this.list.push(title);
     this.notifyObservable(this);
   }
 }
@@ -35,19 +36,21 @@ class reproductionList extends Observable {
 class subscriptorOne {
   notify(message) {
     console.log(`The new document added is ${message.lastVideo}`);
+    console.log(`ReproductionList ${message.list}`);
   }
 }
 
 class subscriptorTwo {
   notify(message) {
-    console.log(`The last document added is ${message.lastVideo}`);
+    console.log(`The last video added is ${message.lastVideo}`);
+    console.log(`ReproductionList ${message.list}`);
   }
 }
 
-let documentAdded = new reproductionList();
+let videoAdded = new reproductionList();
 
-documentAdded.subscribe(new subscriptorOne());
-documentAdded.subscribe(new subscriptorTwo());
+videoAdded.subscribe(new subscriptorOne());
+videoAdded.subscribe(new subscriptorTwo());
 
-documentAdded.update("New video added, Programing Js");
-documentAdded.update("New video added, The Big Bang Theory");
+videoAdded.update("Programing Js");
+videoAdded.update("The Big Bang Theory");
