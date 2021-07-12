@@ -1,0 +1,11 @@
+const MyComponent = function() {
+  // Change code below this line
+  return(
+    <div>
+      <h1>Buenos días</h1>
+    </div>
+  );
+
+
+  // Change code above this line
+}

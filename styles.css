@@ -1,0 +1,60 @@
+html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.root{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* .containerPersonajes{
+    width: 100%;
+}
+
+.personaje{
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+}
+
+.personajeData{
+    width: 300px;
+    text-align: center;
+    padding: 5px;
+    margin: 10px;
+    background-color: rgb(100, 100, 100);
+    color: white;
+} */
+
+.header-container{
+    height: 10%;
+    background-color: #a244fa;
+}
+
+.header{
+    display: flex;
+    align-content: space-between;
+}
+
+.header-icon{
+    width: 80px;
+}
+
+.peoeple-container{
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+}
+
+.personage{
+    width: 300px;
+    text-align: center;
+    padding: 5px;
+    margin: 10px;
+    background-color: rgb(100, 100, 100);
+    color: white;
+}
